@@ -17,13 +17,17 @@ public interface OrderService  {
 	
 	public Order placedOrder (Long orderId) throws OrderException;
 	
+	public Order confirmedOrder(Long orderId) throws OrderException;
+	
 	public Order shippedOrder(Long orderId) throws OrderException;
 	
 	public Order deliveredOrder(Long orderId) throws OrderException;
 	
 	public Order cancledOrder(Long orderId) throws OrderException;
 	
-	public List<Order>getAlOrders();
+	public List<Order>getAllOrders();
 	
-	public Order deleteOrder(Long orderId) throws OrderException;
+	public void deleteOrder(Long orderId) throws OrderException;
+	
+	
 }

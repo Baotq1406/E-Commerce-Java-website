@@ -1,5 +1,6 @@
 package com.BookShop.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +18,7 @@ import com.BookShop.service.ProductService;
 @RequestMapping("/api")
 public class ProductController {
 	
+	@Autowired
 	private ProductService productService;
 	
 	@GetMapping("/products")

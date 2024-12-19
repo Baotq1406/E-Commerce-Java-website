@@ -24,7 +24,7 @@ public class OrderItem {
 	@ManyToOne
 	private Product product;
 	
-	private int quantity;
+	private Integer quantity;
 	
 	private Integer price;
 	
@@ -38,7 +38,7 @@ public class OrderItem {
 		// TODO Auto-generated constructor stub
 	}
 
-	public OrderItem(Long id, Order order, Product product, int quantity, Integer price, Integer discountedPrice,
+	public OrderItem(Long id, Order order, Product product, Integer quantity, Integer price, Integer discountedPrice,
 			Long userId, LocalDateTime deliveryDate) {
 		super();
 		this.id = id;
@@ -79,7 +79,7 @@ public class OrderItem {
 		return quantity;
 	}
 
-	public void setQuantity(int quantity) {
+	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
 

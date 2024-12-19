@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.BookShop.config.JwtProvider;
 import com.BookShop.exception.UserException;
+import com.BookShop.model.Cart;
 import com.BookShop.model.User;
 import com.BookShop.repository.UserRepository;
 import com.BookShop.request.LoginRequest;
 import com.BookShop.response.AuthResponse;
+import com.BookShop.service.CartService;
 import com.BookShop.service.CustomeUserServiceImplementation;
 
 @RestController
@@ -29,16 +31,19 @@ public class AuthController {
 	private JwtProvider jwtProvider;
 	private PasswordEncoder passwordEncoder;
 	private CustomeUserServiceImplementation customeUserService;
+	private CartService cartService;
 	
 	public AuthController(UserRepository userRepository, 
 			CustomeUserServiceImplementation customeUserService, 
 			PasswordEncoder passwordEncoder,
-			JwtProvider jwtProvider) {
+			JwtProvider jwtProvider,
+			CartService cartService) {
 		// TODO Auto-generated constructor stub
 		this.userRepository=userRepository;
 		this.customeUserService=customeUserService;
 		this.passwordEncoder=passwordEncoder;
 		this.jwtProvider=jwtProvider;
+		this.cartService=cartService;
 	}
 	
 	@PostMapping("/signup")
@@ -66,6 +71,7 @@ public class AuthController {
 		createdUser.setLastName(lastName);
 		
 		User savedUser=userRepository.save(createdUser);
+		Cart cart=cartService.createCart(savedUser);
 		
 		Authentication authentication  = new UsernamePasswordAuthenticationToken(savedUser.getEmail(), savedUser.getPassword());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
