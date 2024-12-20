@@ -21,12 +21,11 @@ public class ApiResponse {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public Boolean getStatus() {
+	public Boolean getStatus(boolean status) {
 		return status;
 	}
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-	
 	
 }

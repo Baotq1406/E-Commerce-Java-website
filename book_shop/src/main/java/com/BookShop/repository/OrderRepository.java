@@ -10,6 +10,7 @@ import com.BookShop.model.Order;
 
 public interface OrderRepository extends JpaRepository<Order, Long> {
 	
-	@Query("SELECT o FROM Order o WHERE o.user.id =:userId AND (o.orderStatus = com.BookShop.model.OrderStatus.PLACED OR o.orderStatus = com.BookShop.model.OrderStatus.CONFIRMED OR o.orderStatus = com.BookShop.model.OrderStatus.SHIPPED OR o.orderStatus = com.BookShop.model.OrderStatus.DELIVERED)")
-	public List<Order> getUsersOrders(@Param("UserId")Long userId);
+	@Query("SELECT o FROM Order o WHERE o.user.id =:userId AND (o.orderStatus= 'PLACED' OR o.orderStatus= 'CONFIRMED' OR o.orderStatus= 'SHIPPED' OR o.orderStatus= 'DELIVERED')")
+	public List<Order> getUsersOrders(@Param("userId") Long userId);
+
 }
